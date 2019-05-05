@@ -25,6 +25,7 @@ const argv =yargs
 .argv;
 var command =argv._[0];
 
+
 if (command==='add'){
    var note= notes.addnote(argv.title,argv.body);  
    if(note) {
