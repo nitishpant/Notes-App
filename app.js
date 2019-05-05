@@ -3,10 +3,27 @@ const _ =require('lodash');
 const yargs=require('yargs');
 
 const notes =require('./notes.js');
-
-const argv =yargs.argv;
+const titleoptions={
+    describe:'Title of the note',
+    demand:true
+};
+const argv =yargs
+    .command('Add','Add a new note',{
+    title:titleoptions,
+    body:{
+        describe: 'Body of the note',
+    }
+})
+    .command('List','List all the Notes')
+    .command('read','Read a note',{
+        title:titleoptions, 
+    })
+    .command('Remove','Remove a note',{
+        title:titleoptions
+    })
+ .help()
+.argv;
 var command =argv._[0];
-
 
 if (command==='add'){
    var note= notes.addnote(argv.title,argv.body);  
